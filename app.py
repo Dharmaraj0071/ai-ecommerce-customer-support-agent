@@ -7,7 +7,7 @@ tool calling, and lightweight customer memory.
 from __future__ import annotations
 
 import re
-from typing import Callable
+from typing import Callable, Optional
 
 
 PRODUCTS = [
@@ -176,7 +176,7 @@ def run_tool(tool_name: str, **arguments) -> str:
     return tool(**arguments)
 
 
-def extract_order_id(text: str) -> str | None:
+def extract_order_id(text: str) -> Optional[str]:
     match = re.search(r"\bORD-\d{4}\b", text.upper())
     return match.group(0) if match else None
 
